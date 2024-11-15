@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameShop - About</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    {% include 'includes/menu.html' %}
+    <div class="content">
+        {% block content %}
+        <h1 class="text-center">О нас - мы GameShop</h1>
+        <p class="text-center">Gamestop - это ваш универсальный магазин, где вы найдете все, что нужно для игр! У нас есть все, от последних релизов до вечной классики.</p>
+        {% endblock %}
+    </div>
+</body>
+</html>

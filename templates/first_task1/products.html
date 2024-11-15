@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список товаров</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    {% include 'includes/menu.html' %}
+    <div class="product-list">
+        <h1>Наши продукты</h1>
+        <ul>
+            {% for game in games %}
+            <li class="product">
+                <strong>{{ game.title }}</strong>: {{ game.description }}. Стоимость: {{ game.cost }}
+                <button class="button">Купить</button>
+            </li>
+            {% empty %}
+            <li>Нет доступных продуктов</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
