@@ -21,4 +21,14 @@ class Game(models.Model):
     buyer = models.ManyToManyField('Buyer', related_name='games')
 
     def __str__(self):
-        return self
+        return self.title
+
+class Post(models.Model):
+    title = models.CharField(max_length=120)
+    content = models.TextField()
+    author = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.title
+
+

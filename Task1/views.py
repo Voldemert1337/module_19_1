@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import UserRegistrationForm
 from django.http import HttpResponse
 from .models import Buyer, Game
+from django.core.paginator import Paginator
 # Create your views here.
 
 
@@ -50,10 +51,15 @@ def sign_up_by_django(request):
 
     return render(request, 'first_task1/registration_page.html', info)
 
-#Мой код
+
 def product_list(request):
-    games = list(Game.objects.all())
-    context = {'games': games}
+    game_list = Game.objects.all()
+    per_page = request.GET.get('per_page', 10)  # Получение количества элементов на странице из запроса
+    paginator = Paginator(game_list, per_page)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj': page_obj, 'per_page': per_page}
     return render(request, 'first_task1/products.html', context)
 
-#Однокурсника код
